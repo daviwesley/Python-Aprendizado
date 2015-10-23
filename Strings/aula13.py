@@ -1,6 +1,6 @@
 #!/usr/bin/python env
 """
-Notação de Ponto
+Notacaoo de Ponto
 Vamos examinar melhor por que voce usa len(string) 
 e str(object), mas notacao de ponto (como "String".upper()) para o resto.
 """
