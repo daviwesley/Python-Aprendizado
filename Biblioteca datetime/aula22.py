@@ -1,6 +1,6 @@
-#!/usr/bin/python env
+#!/usr/bin/env python
 
 from datetime import datetime
 now = datetime.now()
 
-print '%s/%s/%s %s:%s:%s' % (now.month, now.day, now.year, now.hour, now.minute, now.second)
+print ('%s/%s/%s %s:%s:%s' %(now.month, now.day, now.year, now.hour, now.minute, now.second))
