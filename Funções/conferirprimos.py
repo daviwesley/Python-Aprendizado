@@ -11,7 +11,9 @@ __email__ = "davi.wesley@icloud.com"
 def verificaPrimos(num):
     # numeros primos sao maiores do que 1
     if num > 1:
-       # cria um laço para verificar o numero informado
+       # cria um laço para verificar o divisor
+       # se houver um divisor antes do numero informado
+       # sabemos esse numero nao eh um primo :)
        for i in range(2,num):
            if (num % i) == 0:
                print num,"nao eh um numero primo"
