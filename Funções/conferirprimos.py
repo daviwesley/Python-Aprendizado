@@ -5,6 +5,9 @@
 Um numero primo eh um numero natural maior do que 1
 que tem apenas dois divisores positivos distintos, 1 e ele mesmo
 '''
+__author__      = "Davi Wesley"
+__email__ = "davi.wesley@icloud.com"
+
 def verificaPrimos(num):
     # numeros primos sao maiores do que 1
     if num > 1:
