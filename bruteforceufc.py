@@ -1,9 +1,9 @@
+# -*- coding: cp1252 -*-
 import urllib2
 __author__      = "Davi Wesley"
 __email__ = "davi.wesley@icloud.com"
 '''
-Esse programa foi feito para fins educativos, qualquer dano
-é de responsabilidade total do usuário
+Esse programa foi feito para fins educativos
 '''
 def main():
   inscricao = int(input("Digite sua incrição: "))
