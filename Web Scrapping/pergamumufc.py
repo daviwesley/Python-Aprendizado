@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 with requests.Session() as c:
   url = "https://pergamum.ufc.br/pergamum/biblioteca_s/php/login_usu.php"
-  USUARIO = input("Digite sua Matricula")
+  USUARIO = input("Digite a Matricula")
   SENHA = input("Digite a senha")
   c.get(url)
   login_data = dict(flag='index.php', login=USUARIO,password=SENHA,button="Acessar",numero_mestre='',ifsp_categ='')
@@ -12,11 +12,17 @@ with requests.Session() as c:
 
   soup = BeautifulSoup(resposta.content,"html.parser")
   print(soup.find(id="nome").get_text())
-  dados = soup.find_all("a",{"class":"txt_azul"})
-
+  livros = soup.find_all("a",{"class":"txt_azul"})
+  datas = soup.find_all('td',class_='txt_cinza_10')
+  multas = soup.find_all('td',class_='txt_magenta')
   #dados.find("div",{"class":"t1"}) titulos pendentes
   #dados.find_all("a",{"class":"txt_azul"}) livros
-  count=0
-  for conteudo in dados:
+  count=3
+  aux=0
+  for conteudo in livros:
       print(conteudo.text.replace("\t",""))
+      print("Data de Devolucao "+str(datas[count].get_text()))
+      print("Valor da multa: "+str(multas[aux].get_text()))
+      count=count+3
+      aux=aux+1
       #print(soup.find("td",{"class":"txt_cinza_10"}))
