@@ -3,8 +3,8 @@ from bs4 import BeautifulSoup
 
 with requests.Session() as c:
   url = "https://pergamum.ufc.br/pergamum/biblioteca_s/php/login_usu.php"
-  USUARIO = input()
-  SENHA = input()
+  USUARIO = input("Digite sua Matricula")
+  SENHA = input("Digite a senha")
   c.get(url)
   login_data = dict(flag='index.php', login=USUARIO,password=SENHA,button="Acessar",numero_mestre='',ifsp_categ='')
   c.post(url,data=login_data,headers={'Referer':'https://pergamum.ufc.br/pergamum/biblioteca_s/php/login_usu.php'})
