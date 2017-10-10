@@ -11,11 +11,12 @@ with requests.Session() as c:
   resposta = c.get('https://pergamum.ufc.br/pergamum/biblioteca_s/meu_pergamum/index.php?flag=index.php')
 
   soup = BeautifulSoup(resposta.content,"html.parser")
+  print(soup.find(id="nome").get_text())
   dados = soup.find_all("a",{"class":"txt_azul"})
+
   #dados.find("div",{"class":"t1"}) titulos pendentes
   #dados.find_all("a",{"class":"txt_azul"}) livros
   count=0
   for conteudo in dados:
       print(conteudo.text.replace("\t",""))
-      #print(soup.find_all("td",{"class":"txt_cinza_10"}))
-
+      #print(soup.find("td",{"class":"txt_cinza_10"}))
