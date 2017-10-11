@@ -1,5 +1,5 @@
 Instale as bibliotecas Requests e BeautifulSoup
 
-Windows ou Linux
+Windows ou Linux\n
 pip install requests
 pip install BeautifulSoup4
