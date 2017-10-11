@@ -1,4 +1,4 @@
-<b>Instale as bibliotecas Requests e BeautifulSoup</b>
+<h1>Instale as bibliotecas Requests e BeautifulSoup</h1>
 
 <b>Windows ou Linux</b><br>
 pip install requests<br>
