@@ -1,0 +1,2 @@
+1. Instale o pytohon na sua máquina usando esse site https://www.python.org/ftp/python/3.6.4/python-3.6.4.exe
+2. Usando o terminal de comando(prompt de comando do windows) como administrador execute o seguinte comando: pip install beautifulsoup
