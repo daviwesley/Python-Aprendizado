@@ -12,7 +12,7 @@ table = soup.find('table', id="ctl00_conteudo_gridProcessos")
 linhas = table.find_all("tr")
 
 for dados in linhas:
-    if dados.get_text().split()[6] == "Licenciamento":
+    if dados.get_text().split()[6] == "Disponibilidade":
         texto = " ".join(dados.get_text().split())
         with open("lista.txt", "a") as arquivo:
             arquivo.write(texto + "\n")
