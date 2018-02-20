@@ -13,4 +13,7 @@ linhas = table.find_all("tr")
 
 for dados in linhas:
     if dados.get_text().split()[6] == "Licenciamento":
-        print(dados.get_text())
+        texto = " ".join(dados.get_text().split())
+        with open("lista.txt", "a") as arquivo:
+            arquivo.write(texto + "\n")
+        #print(dados.get_text())
