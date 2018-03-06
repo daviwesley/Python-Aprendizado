@@ -11,7 +11,7 @@ with requests.Session() as c:
   resposta = c.get('https://pergamum.ufc.br/pergamum/biblioteca_s/meu_pergamum/index.php?flag=index.php')
 
   soup = BeautifulSoup(resposta.content,"html.parser")
-  print(soup.find(id="nome").get_text())
+  print(" ".join(soup.find(id="nome").get_text().split()))
   livros = soup.find_all("a",{"class":"txt_azul"})
   datas = soup.find_all('td',class_='txt_cinza_10')
   multas = soup.find_all('td',class_='txt_magenta')
@@ -21,8 +21,8 @@ with requests.Session() as c:
   aux=0
   for conteudo in livros:
       print(conteudo.text.replace("\t",""))
-      print("Data de Devolucao "+str(datas[count].get_text()))
-      print("Valor da multa: "+str(multas[aux].get_text()))
+      print("Data de Devolucao:"+" ".join(datas[count].get_text().split()))
+      print("Valor da multa: "+" ".join(multas[aux].get_text().split()))
       count=count+3
       aux=aux+1
       #print(soup.find("td",{"class":"txt_cinza_10"}))
