@@ -1,12 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
-
+import sys
 with requests.Session() as c:
   url = "https://pergamum.ufc.br/pergamum/biblioteca_s/php/login_usu.php"
-  USUARIO = input("Digite a Matricula")
-  SENHA = input("Digite a senha")
+  # USUARIO = input("Digite a Matricula")
+  # SENHA = input("Digite a senha")
   c.get(url)
-  login_data = dict(flag='index.php', login=USUARIO,password=SENHA,button="Acessar",numero_mestre='',ifsp_categ='')
+  login_data = dict(flag='index.php', login=sys.argv[1],password=sys.argv[2],button="Acessar",numero_mestre='',ifsp_categ='')
   c.post(url,data=login_data,headers={'Referer':'https://pergamum.ufc.br/pergamum/biblioteca_s/php/login_usu.php'})
   resposta = c.get('https://pergamum.ufc.br/pergamum/biblioteca_s/meu_pergamum/index.php?flag=index.php')
 
