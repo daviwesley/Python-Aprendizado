@@ -1,46 +1,36 @@
 from bs4 import BeautifulSoup
-from PIL import Image
-import pytesseract
-import cv2
-import os
-import requests
+from argparse import ArgumentParser
+import glob
+__author__ = "Davi Wesley"
+ap = ArgumentParser(prog="dnpmParser.py",epilog="""Exemplos de uso: python dpmnParser.py main.html,
+                                                   python dnpmParser.py *.main.html,
+                                                   python dnpmParser.py main.html -s Disponibilidade,
+                                                   python dnpmParser.py main.html -s 'Atividade de Pesquisa'""")
+ap.add_argument("pagina",
+            help="arquivo da página html do site, para vários arquivos usar o sinal '*'", type=str,
+            nargs=1)
+ap.add_argument("-p", "--pesquisar",
+            help="pesquisa a informação dada, use aspas simples quando tiver mais que uma palavra",
+            type=str,default="Licenciamento")
+ap.add_argument("-v", "--verbose",help="Explica o que tá acontecendo no momento",action="count")
+args = ap.parse_args()
 
-url_base = "https://sistemas.dnpm.gov.br/SCM/Extra/site/admin/pesquisarProcessos.aspx"
-erro = "o código digitado não confere com o código da imagem."
+for fpath in glob.glob(args.pagina[0]):
+    if args.verbose:
+        print("Processando página {}".format(fpath))
+    url = fpath
+    page = open(url, encoding="utf8")
+    soup = BeautifulSoup(page.read(), "html.parser")
 
-def processarImagem():
-    """
-    Aplica um tom de cinza na imagem e depois borra o fundo para facilitar
-    na leitura das letras. Retorna uma string com o resultado da leitura do
-    texto
-    """
-    image = cv2.imread("CaptchaImage.jpg")
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    gray = cv2.medianBlur(gray, 3)
-    filename = "{}.png".format(os.getpid())
-    cv2.imwrite(filename, gray)
-    text = pytesseract.image_to_string(Image.open(filename))
-    os.remove(filename)
-    return text
+    table = soup.find('table', id="ctl00_conteudo_gridProcessos")
+    linhas = table.find_all("tr")
 
-url = r"asdfasd.html"
-page = open(url, encoding="utf8")
-soup = BeautifulSoup(page.read(), "html.parser")
-
-table = soup.find('table', id="ctl00_conteudo_gridProcessos")
-print(processarImagem())
-linhas = table.find_all("tr")
-#linhas[3].find_all("td")[2].get_text().split()[0]
-
-for i in range(1,len(linhas)):
-    #print("tamanho = {}".format(len(dados)))
-    #print(len(linhas[i].find_all("td")))
-    valor = linhas[i].find_all("td")[2]
-    valorcampo = " ".join(valor.get_text().split())
-    #print("valor campo = {}".format(valorcampo))
-    if valorcampo == "Licenciamento":
-        #print("if verdadeiro")
-        texto = " ".join(linhas[i].get_text().split())
-        with open("lista.txt", "a") as arquivo:
-            arquivo.write(texto + "\n")
-        #print(dados.get_text())
+    for i in range(1,len(linhas)):
+        valor = linhas[i].find_all("td")[2]
+        valorcampo = " ".join(valor.get_text().split())
+        if valorcampo == args.pesquisar:
+            if args.verbose == 2:
+                print("Página {}, palavra encontrada = {}".format(fpath, args.pesquisar))
+            texto = " ".join(linhas[i].get_text().split())
+            with open("lista.txt", "a", encoding="utf8") as arquivo:
+                arquivo.write(texto + "\n")
