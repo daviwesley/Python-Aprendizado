@@ -2,5 +2,5 @@ language: python
 python:
   - 3.6
 script:
-  - cd ./testes/fazertestes.py && python fazertestes.py
+  - cd ./testes && python fazertestes.py
   
