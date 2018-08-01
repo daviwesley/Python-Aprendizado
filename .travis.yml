@@ -1,6 +1,15 @@
+sudo: false
+
 language: python
+
 python:
   - 3.6
-script:
-  - cd ./testes && python fazertestes.py
   
+install:
+  - pip install codecov
+
+script:
+  - coverage run ./testes/fazertestes.py
+
+after_success:
+  - codecov 
